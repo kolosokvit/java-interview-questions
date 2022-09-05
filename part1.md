@@ -1,0 +1,12 @@
+**1. List the Object class's methods.**
+- protected **Object** **clone**() - creates and returns a copy of this object.
+- boolean **equals**(**Object** obj) - indicates whether some other object is "equal to" this one.
+- protected void **finalize**() - called by the garbage collector on an object when garbage collection determines that there are no more references to the object.
+- **Class**<?> **getClass**() - returns the runtime class of this Object.
+- int **hashCode**() - returns a hash code value for the object.
+- void **notify**() - wakes up a single thread that is waiting on this object's monitor.
+- void **notifyAll**() - wakes up all threads that are waiting on this object's monitor.
+- **String** **toString**() - returns a string representation of the object.
+- void **wait**() - causes the current thread to wait until another thread invokes the **notify()** method or the **notifyAll()** method for this object.
+- void **wait**(long timeout) - causes the current thread to wait until either another thread invokes the **notify()** method or the **notifyAll()** method for this object, or a specified amount of time has elapsed.
+- void **wait(**long timeout, int nanos) - causes the current thread to wait until another thread invokes the **notify()** method or the **notifyAll()** method for this object, or some other thread interrupts the current thread, or a certain amount of real time has elapsed.
