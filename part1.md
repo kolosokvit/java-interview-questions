@@ -50,3 +50,30 @@ These methods need for organizing threads' work with shared resources.
 - notify() - wakes up a single thread that is waiting on this object's monitor.
 - notifyAll() - wakes up all threads that are waiting on this object's monitor.
 
+**5. Why do we need the finalize() method and how does it work?**
+
+finalize() method in Java is an Object Class method that is used to perform cleanup activity before destroying any object. It is called by garbage collector before destroying the object from memory. finalize() method is called by default for every object before its deletion. This method helps garbage collector to close all the resources used by the object and helps JVM in-memory optimization.
+
+JVM calls the garbage collector to delete unreferenced objects. After determining the objects that have no links, it calls the finalize() method which will perform the clean activity and the garbage collector destroys the object.
+
+Cleanup activity is the process of closing all the resources being used by an object before it is destroyed. Resources that are being used by any object are database connections, network connections, etc. These resources are released and clean-up activity is performed by the garbage collector and then the object is deleted.
+The major advantage of performing clean-up before garbage collection is data resources or network connections that are linked to unreferenced object are revoked and can be used again. Cleanup ensures resources are not linked to objects unnecessary and helps JVM in boosting memory optimization and speed.
+
+For each object garbage collector calls finalize() method only once.
+
+**6. What is the difference between final, finally, and finalize?**
+
+**final keyword**
+
+This keyword can be used with variables, methods, and also with classes. The final keyword in java has a different meaning depending upon whether it is applied to a variable, class, or method.
+- final with Variables: The value of the variable cannot be changed once initialized. If we declare any variable as final, we can’t modify its contents since it is final, and if we modify it then we get Compile Time Error.
+- final with Class: The class cannot be subclassed. Whenever we declare any class as final, it means that we can’t extend that class or that class can’t be extended, or we can’t make a subclass of that class. If a class is declared as final as by default all of the methods present in that class are automatically final, but variables are not.
+- final with Method: The method cannot be overridden by a subclass. Whenever we declare any method as final, then it means that we can’t override that method. 
+
+**finally keyword**
+
+The finally keyword is used in association with a try/catch block and guarantees that a section of code will be executed, even if an exception is thrown. The final block will be executed after the try and catch blocks, but before control transfers back to its origin. 
+
+**finalize() method**
+
+finalize() method in Java is an Object Class method that is used to perform cleanup activity before destroying any object. It is called by garbage collector before destroying the object from memory. finalize() method is called by default for every object before its deletion. This method helps garbage collector to close all the resources used by the object and helps JVM in-memory optimization.
