@@ -77,3 +77,59 @@ The finally keyword is used in association with a try/catch block and guarantees
 **finalize() method**
 
 finalize() method in Java is an Object Class method that is used to perform cleanup activity before destroying any object. It is called by garbage collector before destroying the object from memory. finalize() method is called by default for every object before its deletion. This method helps garbage collector to close all the resources used by the object and helps JVM in-memory optimization.
+
+**7. What is a try-with-resources statement?**
+
+The try-with-resources statement is a try statement that declares and initializes one or more resources. The resource is as an object that must be closed after finishing the program. The try-with-resources statement ensures that each resource is closed at the end of the statement execution. You can pass any object that implements java.lang.AutoCloseable, which includes all objects which implement java.io.Closeable.
+
+try (PrintWriter writer = new PrintWriter(new File("test.txt"))) {
+
+writer.println("Hello World");
+
+}
+
+The simple and obvious way to use the new try-with-resources functionality is to replace the traditional and verbose try-catch-finally block.
+Typical try-catch-finally block:
+
+Scanner scanner = null;
+
+try {
+
+scanner = new Scanner(new File("test.txt"));
+
+while (scanner.hasNext()) {
+
+System.out.println(scanner.nextLine());
+
+}
+
+} catch (FileNotFoundException e) {
+
+e.printStackTrace();
+
+} finally {
+
+if (scanner != null) {
+
+scanner.close();
+}
+
+}
+
+try-with-resources:
+
+try (Scanner scanner = new Scanner(new File("test.txt"))) {
+
+while (scanner.hasNext()) {
+
+System.out.println(scanner.nextLine());
+
+}
+
+} catch (FileNotFoundException e) {
+
+e.printStackTrace();
+
+}
+
+Resources that were defined/acquired first will be closed last. A try-with-resources block can still have the catch and finally blocks, which will work in the same way as with a traditional try block.
