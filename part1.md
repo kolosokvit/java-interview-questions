@@ -133,3 +133,15 @@ e.printStackTrace();
 }
 
 Resources that were defined/acquired first will be closed last. A try-with-resources block can still have the catch and finally blocks, which will work in the same way as with a traditional try block.
+
+**8. What's the difference between wait(1000) and sleep(1000)?**
+
+void wait(long timeout) - Object class's method, causes the current thread to wait until either another thread invokes the notify() method or the notifyAll() method for this object, or a specified amount of time has elapsed.
+
+static void sleep(long millis) - Thread class's method, causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds, subject to the precision and accuracy of system timers and schedulers.
+
+Simply put, wait(long timeout) is an instance method that's used for thread synchronization. It can be called on any object, as it's defined right on java.lang.Object, but it can only be called from a synchronized block. It releases the lock on the object so that another thread can jump in and acquire a lock.
+
+On the other hand, Thread.sleep(long millis) is a static method that can be called from any context. Thread.sleep(long millis) pauses the current thread and does not release any locks.
+
+When we use the sleep(long millis) method, a thread gets started after a specified time interval, unless it is interrupted. For wait(long timeout), the waking up process is a bit more complicated. We can wake the thread by calling either the notify() or notifyAll() methods during timeout on the monitor that is being waited on. After timeout time has elapsed thread, that entered synchronized block with wait(long timeout) will go from waiting to runnable state.
