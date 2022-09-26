@@ -145,3 +145,14 @@ Simply put, wait(long timeout) is an instance method that's used for thread sync
 On the other hand, Thread.sleep(long millis) is a static method that can be called from any context. Thread.sleep(long millis) pauses the current thread and does not release any locks.
 
 When we use the sleep(long millis) method, a thread gets started after a specified time interval, unless it is interrupted. For wait(long timeout), the waking up process is a bit more complicated. We can wake the thread by calling either the notify() or notifyAll() methods during timeout on the monitor that is being waited on. After timeout time has elapsed thread, that entered synchronized block with wait(long timeout) will go from waiting to runnable state.
+
+**9. What's the difference between i++ and ++i?**
+
+- Post-Increment (i++): we use i++ in our statement if we want to use the current value, and then we want to increment the value of i by 1.
+- Pre-Increment(++i): We use ++i in our statement if we want to increment the value of i by 1 and then use it in our statement.
+
+int i = 3;
+
+int a = i++; // a = 3, i = 4
+
+int b = ++a; // b = 4, a = 4
